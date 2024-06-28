@@ -8,6 +8,7 @@ import Home from "./home";
 import Login from './login'
 import './App.css'
 import AddUser from "./users/AddUser";
+import TopNav from "./components/TopNav";
 
 function App () {
 
@@ -22,6 +23,7 @@ function App () {
             {/*        <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />*/}
             {/*    </Routes>*/}
             {/*</BrowserRouter>*/}
+            <TopNav/>
             <AddUser/>
             {/*<TitleComponent/>*/}
             {/*    <MyFirstComponent/>*/}

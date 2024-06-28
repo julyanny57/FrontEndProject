@@ -100,3 +100,25 @@
   border: 1px solid grey;
   padding-left: 8px;
 }
+
+.navbar {
+  background: #2e158c;
+}
+
+.brand,.list_item {
+  color: #fafafa;
+}
+
+.ml-auto, .mx-auto, .ms-auto {
+  margin-left: auto!important;
+}
+
+.list_item:hover {
+  color: tomato!important;
+}
+
+.btn {
+  background: tomato!important;
+  border: none;
+  border-radius: 20px;
+}
