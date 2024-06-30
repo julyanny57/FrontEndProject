@@ -3,12 +3,11 @@ import {Box, Button} from '@mui/material';
 import MyFirstComponent from "./components/MyFirstComponent";
 import TitleComponent from "./components/TitleComponent";
 import TriangleComponent from "./components/TriangleComponent";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "./home";
-import Login from './login'
+import Home from "./pages/Home";
+import Navbar from './layout/Navbar'
 import './App.css'
 import AddUser from "./users/AddUser";
-import TopNav from "./components/TopNav";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App () {
 
@@ -16,20 +15,15 @@ function App () {
     const [email, setEmail] = useState('')
 
     return (
-        <Box>
-            {/*<BrowserRouter>*/}
-            {/*    <Routes>*/}
-            {/*        <Route path="/" element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />*/}
-            {/*        <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />*/}
-            {/*    </Routes>*/}
-            {/*</BrowserRouter>*/}
-            <TopNav/>
-            <AddUser/>
-            {/*<TitleComponent/>*/}
-            {/*    <MyFirstComponent/>*/}
-            {/*    <TriangleComponent/>*/}
-        </Box>
-    );
+
+            <Router>
+            <Navbar/>
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route exact path="/adduser" element={<AddUser />} />
+                </Routes>
+            </Router>
+                )
 }
 
 export default App;

@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {Box} from "@mui/material";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AddUser() {
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     const[user, setUser] = useState({
         name:"",
@@ -21,10 +21,10 @@ export default function AddUser() {
 
     }
 
-    const onSubmit= async (e)=>{
+    const onSubmit = async (e)=>{
       e.preventDefault();
-      await axios.post("http:localhost:8080/user", user)
-      // navigate("/");
+        await axios.post("http://localhost:8080/user", user);
+        navigate("/");
     }
 
     return (
@@ -117,7 +117,6 @@ export default function AddUser() {
                     onChange={(e)=>onInputChange(e)}
                 />
             </Box>
-            </form>
             <Box style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -132,6 +131,7 @@ export default function AddUser() {
             Cancel
             </button>
                 </Box>
+            </form>
         </Box>
     );
 }
