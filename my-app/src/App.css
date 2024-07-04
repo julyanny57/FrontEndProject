@@ -118,7 +118,9 @@
 }
 
 .btn {
-  background: tomato!important;
+  background: forestgreen!important;
   border: none;
   border-radius: 20px;
+  color: black;
 }
+

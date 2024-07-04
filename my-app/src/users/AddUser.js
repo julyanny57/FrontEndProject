@@ -22,7 +22,7 @@ export default function AddUser() {
     }
 
     const onSubmit = async (e)=>{
-      e.preventDefault();
+        e.preventDefault();
         await axios.post("http://localhost:8080/user", user);
         navigate("/");
     }
@@ -41,21 +41,17 @@ export default function AddUser() {
                 Register user
             </Box>
             <form onSubmit={(e) => onSubmit(e)}>
-            <Box style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-             }}>
-                <label htmlFor="Name" className="form-label">
-                    Name
-                </label>
-            </Box>
-            <Box style={{
-                display: 'flex',
-                alignItems: 'center',
+                <Box style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'}}>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
                 justifyContent: 'center',
                 padding: '0.6rem 1.2rem',
                 border: 'none',
+                    width:400,
             }}>
                 <input
                     type={"text"}
@@ -65,22 +61,25 @@ export default function AddUser() {
                     value={name}
                     onChange={(e)=>onInputChange(e)}
                 />
+                </Box>
             </Box>
             <Box style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <label htmlFor='Username' className="form-label">
-                    Username
-                </label>
             </Box>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'}}>
             <Box style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 padding: '0.6rem 1.2rem',
                 border: 'none',
+                width:400,
             }}>
                 <input
                     type={"text"}
@@ -91,15 +90,17 @@ export default function AddUser() {
                     onChange={(e)=>onInputChange(e)}
                 />
             </Box>
-
+                </Box>
             <Box style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <label htmlFor="Email" className="form-label">
-                    Username
-                </label>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
             </Box>
             <Box style={{
                 display: 'flex',
@@ -107,6 +108,7 @@ export default function AddUser() {
                 justifyContent: 'center',
                 padding: '0.6rem 1.2rem',
                 border: 'none',
+                width:400,
             }}>
                 <input
                     type={"text"}
@@ -117,19 +119,20 @@ export default function AddUser() {
                     onChange={(e)=>onInputChange(e)}
                 />
             </Box>
-            <Box style={{
+            </Box>
+                <Box style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     padding: '0.6rem 1.2rem',
                     border: 'none',
                 }}>
-            <button type="submit">
-             Submit
-            </button>
-            <button>
-            Cancel
-            </button>
+                    <button type="submit" className="btn btn-outline-primary">
+                        Submit
+                    </button>
+                    <button className="btn btn-outline-danger mx-2" to="/">
+                        Cancel
+                    </button>
                 </Box>
             </form>
         </Box>
