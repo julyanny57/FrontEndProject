@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Box} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function AddUser() {
 
@@ -29,8 +30,21 @@ export default function AddUser() {
 
     return (
         <Box>
+
+            <Box style={{
+                display: 'flex',
+                alignItems: 'right',
+                justifyContent: 'right',
+                padding: '0.6rem 1.2rem',
+                border: 'none',
+            }}>
+                <Link className="bold-text mx-2"to="/">
+                    BACK
+                </Link>
+            </Box>
+
             <Box
-            style={{
+                style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -42,84 +56,86 @@ export default function AddUser() {
             </Box>
             <form onSubmit={(e) => onSubmit(e)}>
                 <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <Box style={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'}}>
-                <Box style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                justifyContent: 'center',
-                padding: '0.6rem 1.2rem',
-                border: 'none',
-                    width:400,
-            }}>
-                <input
-                    type={"text"}
-                    className="form-control"
-                    placeholder="Enter your name"
-                    name="name"
-                    value={name}
-                    onChange={(e)=>onInputChange(e)}
-                />
+                        justifyContent: 'center',
+                        padding: '0.6rem 1.2rem',
+                        border: 'none',
+                        width: 400,
+                    }}>
+                        <input
+                            type={"text"}
+                            className="form-control"
+                            placeholder="Enter your name"
+                            name="name"
+                            value={name}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Box>
                 </Box>
-            </Box>
-            <Box style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}>
-            </Box>
-                <Box style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'}}>
-            <Box style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '0.6rem 1.2rem',
-                border: 'none',
-                width:400,
-            }}>
-                <input
-                    type={"text"}
-                    className="form-control"
-                    placeholder="Enter your username"
-                    name="username"
-                    value={username}
-                    onChange={(e)=>onInputChange(e)}
-                />
-            </Box>
-                </Box>
-            <Box style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}>
                 <Box style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
-            </Box>
-            <Box style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '0.6rem 1.2rem',
-                border: 'none',
-                width:400,
-            }}>
-                <input
-                    type={"text"}
-                    className="form-control"
-                    placeholder="Enter your e-mail"
-                    name="email"
-                    value={email}
-                    onChange={(e)=>onInputChange(e)}
-                />
-            </Box>
-            </Box>
+                </Box>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <Box style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '0.6rem 1.2rem',
+                        border: 'none',
+                        width: 400,
+                    }}>
+                        <input
+                            type={"text"}
+                            className="form-control"
+                            placeholder="Enter your username"
+                            name="username"
+                            value={username}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Box>
+                </Box>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <Box style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                    </Box>
+                    <Box style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '0.6rem 1.2rem',
+                        border: 'none',
+                        width: 400,
+                    }}>
+                        <input
+                            type={"text"}
+                            className="form-control"
+                            placeholder="Enter your e-mail"
+                            name="email"
+                            value={email}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Box>
+                </Box>
                 <Box style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -129,9 +145,6 @@ export default function AddUser() {
                 }}>
                     <button type="submit" className="btn btn-outline-primary">
                         Submit
-                    </button>
-                    <button className="btn btn-outline-danger mx-2" to="/">
-                        Cancel
                     </button>
                 </Box>
             </form>
