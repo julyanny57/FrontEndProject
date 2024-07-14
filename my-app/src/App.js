@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Navbar from './layout/Navbar'
 import './App.css'
 import AddUser from "./users/AddUser";
+import Login from "./pages/Login";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App () {
@@ -21,6 +22,7 @@ function App () {
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/adduser" element={<AddUser />} />
+                    <Route exact path="/loginUser" element={<Login />} />
                 </Routes>
             </Router>
                 )

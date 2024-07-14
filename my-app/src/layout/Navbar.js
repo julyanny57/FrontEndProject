@@ -45,6 +45,9 @@ const TopNav = () => {
                         }
                     </Nav>
                     <Nav className="ms-auto">
+                        <Link className="btn btn-signup" to="/loginUser">LOGIN</Link>
+                    </Nav>
+                    <Nav className="ms-auto">
                         <Link className="btn btn-signup" to="/adduser">Add User</Link>
                     </Nav>
                 </Navbar.Collapse>
