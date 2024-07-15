@@ -6,43 +6,26 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
 
-    const userRef = useRef();
-    const errRef = useRef();
-
-    const [username, setUser] = useState('');
-    const [pwd, setPwd] = useState('');
-    const [errMsq, setErrMsq] = useState('');
-    const [success, setSuccess] = useState('');
-
-    useEffect(() => {
-        userRef.current.focus();
-    },[])
-
-    useEffect(() => {
-        setErrMsq('');
-    },[username, pwd])
+     const [username, setUser] = useState('');
+     const [password, setPwd] = useState('');
 
 
     let navigate = useNavigate();
 
     const submitHandler = async (e)=>{
         e.preventDefault();
-        console.log(username, pwd);
-        setUser('');
-        setPwd('');
-        setSuccess(true);
-        // await axios.post("http://localhost:8080/user", user);
+        await axios.get("http://localhost:8080/username/"+username+"&&"+password+"");
         // navigate("/");
     }
 
     return (
 
-        <>
-            {success ? (
-                <section>
-                    You are login in!
-                </section>
-            ) : (
+        // <>
+        //     {success ? (
+        //         <section>
+        //             You are login in!
+        //         </section>
+        //     ) : (
 
         <Box>
             <Box style={{
@@ -68,70 +51,50 @@ export default function Login() {
                 }}>
                 Login
             </Box>
-                <form onSubmit={submitHandler}>
+            <form onSubmit={(e) => submitHandler(e)}>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                </Box>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
                     <Box style={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        padding: '0.6rem 1.2rem',
+                        border: 'none',
+                        width: 400,
                     }}>
+                        <input
+                            type={"text"}
+                            id="username"
+                            // ref={userRef}
+                            autoComplete="off"
+                            className="form-control"
+                            placeholder="Enter your username"
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUser(e.target.value)}
+                            required
+                        />
                     </Box>
+                </Box>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
                     <Box style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}>
-                        <Box style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            padding: '0.6rem 1.2rem',
-                            border: 'none',
-                            width: 400,
-                        }}>
-                            <input
-                                type={"text"}
-                                id="username"
-                                ref={userRef}
-                                autoComplete="off"
-                                className="form-control"
-                                placeholder="Enter your username"
-                                name="username"
-                                value={username}
-                                onChange={(e) => setUser(e.target.value)}
-                                required
-                            />
-                        </Box>
-                    </Box>
-                    <Box style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}>
-                        <Box style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
-                        </Box>
-                        <Box style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            padding: '0.6rem 1.2rem',
-                            border: 'none',
-                            width: 400,
-                        }}>
-                            <input
-                                type={"password"}
-                                id="password"
-                                className="form-control"
-                                placeholder="Enter your password"
-                                name="password"
-                                value={pwd}
-                                onChange={(e) => setPwd(e.target.value)}
-                                required
-                            />
-                        </Box>
                     </Box>
                     <Box style={{
                         display: 'flex',
@@ -139,13 +102,34 @@ export default function Login() {
                         justifyContent: 'center',
                         padding: '0.6rem 1.2rem',
                         border: 'none',
+                        width: 400,
                     }}>
-                        <button type="submit" className="btn btn-outline-primary">
-                            Sign In
-                        </button>
+                        <input
+                            type={"password"}
+                            id="password"
+                            className="form-control"
+                            placeholder="Enter your password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPwd(e.target.value)}
+                            required
+                        />
                     </Box>
-                </form>
+                </Box>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '0.6rem 1.2rem',
+                    border: 'none',
+                }}>
+                    <button type="submit" className="btn btn-outline-primary">
+                        Sign In
+                    </button>
+                </Box>
+            </form>
         </Box>
-            )} </>
+
+        // )} </>
 );
 }

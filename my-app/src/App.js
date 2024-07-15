@@ -24,6 +24,7 @@ function App () {
                     <Route exact path="/adduser" element={<AddUser />} />
                     <Route exact path="/loginUser" element={<Login />} />
                 </Routes>
+
             </Router>
                 )
 }
