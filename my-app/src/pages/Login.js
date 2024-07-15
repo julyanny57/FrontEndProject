@@ -14,18 +14,15 @@ export default function Login() {
 
     const submitHandler = async (e)=>{
         e.preventDefault();
-        await axios.get("http://localhost:8080/username/"+username+"&&"+password+"");
+        await axios.get("http://localhost:8080/username/"+username+"&&"+password+"").then((response) => {
+            navigate("/circleGame");
+        }, (error) => {
+            navigate("/");
+        });
         // navigate("/");
     }
 
     return (
-
-        // <>
-        //     {success ? (
-        //         <section>
-        //             You are login in!
-        //         </section>
-        //     ) : (
 
         <Box>
             <Box style={{

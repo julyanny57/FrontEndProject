@@ -16,13 +16,13 @@ function App () {
     const [email, setEmail] = useState('')
 
     return (
-
             <Router>
             <Navbar/>
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/adduser" element={<AddUser />} />
                     <Route exact path="/loginUser" element={<Login />} />
+                    <Route exact path="/circleGame" element={<MyFirstComponent />} />
                 </Routes>
 
             </Router>
