@@ -3,23 +3,37 @@ import {Box} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import {getResponseError} from "./errorUtil";
 
 export default function Login() {
 
      const [username, setUser] = useState('');
      const [password, setPwd] = useState('');
+     const [error, setError] = useState(null);
 
 
     let navigate = useNavigate();
 
+    // const submitHandler = async (e)=>{
+    //     e.preventDefault();
+    //     await axios.get("http://localhost:8080/username/"+username+"&&"+password+"").then((response) => {
+    //         navigate("/circleGame");
+    //     }, (error) => {
+    //         console.log('error.response', error.response);
+    //     });
+    //     // navigate("/");
+    // }
+
     const submitHandler = async (e)=>{
         e.preventDefault();
-        await axios.get("http://localhost:8080/username/"+username+"&&"+password+"").then((response) => {
+        try {
+            const {data} = await axios.get("http://localhost:8080/username/" + username + "&&" + password + "");
             navigate("/circleGame");
-        }, (error) => {
-            navigate("/");
-        });
-        // navigate("/");
+            console.log("data:", data);
+        } catch (error) {
+            console.log('error.response', error.response);
+            setError(getResponseError(error));
+        }
     }
 
     return (
@@ -113,6 +127,9 @@ export default function Login() {
                         />
                     </Box>
                 </Box>
+                <Box>
+                    {error}
+                </Box>
                 <Box style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -126,7 +143,5 @@ export default function Login() {
                 </Box>
             </form>
         </Box>
-
-        // )} </>
 );
 }
