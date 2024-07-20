@@ -4,12 +4,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {getResponseError} from "./errorUtil";
+import {getRole} from "./roleUtil";
 
 export default function Login() {
 
      const [username, setUser] = useState('');
      const [password, setPwd] = useState('');
      const [error, setError] = useState(null);
+     const [role, setRole] = useState('');
 
 
     let navigate = useNavigate();
@@ -28,7 +30,15 @@ export default function Login() {
         e.preventDefault();
         try {
             const {data} = await axios.get("http://localhost:8080/username/" + username + "&&" + password + "");
-            navigate("/circleGame");
+
+            setRole(getRole(data));
+            if(role === "circle"){
+                navigate("/circleGame");
+            }
+            if(role === "triangle"){
+                navigate("/triangleGame");
+            }
+
             console.log("data:", data);
         } catch (error) {
             console.log('error.response', error.response);
@@ -58,7 +68,8 @@ export default function Login() {
                     justifyContent: 'center',
                     margin: 40,
                     marginTop: '2rem',
-                    color: '#F43596',
+                    color: '#008000',
+                    fontWeight: 700,
                 }}>
                 Login
             </Box>
@@ -127,8 +138,16 @@ export default function Login() {
                         />
                     </Box>
                 </Box>
-                <Box>
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '0.6rem 1.2rem',
+                    border: 'none',
+                    color: '#F43596',
+                }}>
                     {error}
+                    {/*rolul este = {role}*/}
                 </Box>
                 <Box style={{
                     display: 'flex',

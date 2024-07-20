@@ -23,6 +23,7 @@ function App () {
                     <Route exact path="/adduser" element={<AddUser />} />
                     <Route exact path="/loginUser" element={<Login />} />
                     <Route exact path="/circleGame" element={<MyFirstComponent />} />
+                    <Route exact path="/triangleGame" element={<TriangleComponent />} />
                 </Routes>
 
             </Router>
