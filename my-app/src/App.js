@@ -8,6 +8,8 @@ import Navbar from './layout/Navbar'
 import './App.css'
 import AddUser from "./users/AddUser";
 import Login from "./pages/Login";
+import NoGamesFound from "./pages/NoGamesFound";
+import MixGames from "./pages/MixGames";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App () {
@@ -22,8 +24,10 @@ function App () {
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/adduser" element={<AddUser />} />
                     <Route exact path="/loginUser" element={<Login />} />
+                    <Route exact path="/noGamesFound" element={<NoGamesFound />} />
                     <Route exact path="/circleGame" element={<MyFirstComponent />} />
                     <Route exact path="/triangleGame" element={<TriangleComponent />} />
+                    <Route exact path="/mixGames" element={<MixGames />} />
                 </Routes>
 
             </Router>

@@ -3,8 +3,8 @@ import {Box} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {getResponseError} from "./errorUtil";
-import {getRole} from "./roleUtil";
+import {getResponseError} from ".././utils/errorUtil"
+import {getRole} from ".././utils/roleUtil"
 
 export default function Login() {
 
@@ -31,12 +31,32 @@ export default function Login() {
         try {
             const {data} = await axios.get("http://localhost:8080/username/" + username + "&&" + password + "");
 
+            // setRole(getRole(data));
+            // switch(role) {
+            //     case "circle":
+            //         navigate("/circleGame");
+            //     case "triangle":
+            //         navigate("/triangleGame");
+            //     case "none":
+            //         navigate("/noGamesFound");
+            //     case "admin":
+            //         navigate("/mixGames");
+            //     default:
+            //         navigate("/");
+            // }
+
             setRole(getRole(data));
             if(role === "circle"){
                 navigate("/circleGame");
             }
             if(role === "triangle"){
                 navigate("/triangleGame");
+            }
+            if(role === "none"){
+                navigate("/noGamesFound");
+            }
+            if(role === "admin"){
+                navigate("/mixGames");
             }
 
             console.log("data:", data);
@@ -147,7 +167,6 @@ export default function Login() {
                     color: '#F43596',
                 }}>
                     {error}
-                    {/*rolul este = {role}*/}
                 </Box>
                 <Box style={{
                     display: 'flex',
