@@ -16,47 +16,27 @@ export default function Login() {
 
     let navigate = useNavigate();
 
-    // const submitHandler = async (e)=>{
-    //     e.preventDefault();
-    //     await axios.get("http://localhost:8080/username/"+username+"&&"+password+"").then((response) => {
-    //         navigate("/circleGame");
-    //     }, (error) => {
-    //         console.log('error.response', error.response);
-    //     });
-    //     // navigate("/");
-    // }
-
     const submitHandler = async (e)=>{
         e.preventDefault();
         try {
             const {data} = await axios.get("http://localhost:8080/username/" + username + "&&" + password + "");
 
-            // setRole(getRole(data));
-            // switch(role) {
-            //     case "circle":
-            //         navigate("/circleGame");
-            //     case "triangle":
-            //         navigate("/triangleGame");
-            //     case "none":
-            //         navigate("/noGamesFound");
-            //     case "admin":
-            //         navigate("/mixGames");
-            //     default:
-            //         navigate("/");
-            // }
-
-            setRole(getRole(data));
-            if(role === "circle"){
-                navigate("/circleGame");
-            }
-            if(role === "triangle"){
-                navigate("/triangleGame");
-            }
-            if(role === "none"){
-                navigate("/noGamesFound");
-            }
-            if(role === "admin"){
-                navigate("/mixGames");
+            console.log("data.role=", data.role);
+            switch(data.role) {
+                case 'circle':
+                    navigate("/circleGame");
+                    break;
+                case 'triangle':
+                    navigate("/triangleGame");
+                    break;
+                case 'none':
+                    navigate("/noGamesFound");
+                    break;
+                case 'admin':
+                    navigate("/mixGames");
+                    break;
+                default:
+                navigate("/");
             }
 
             console.log("data:", data);
