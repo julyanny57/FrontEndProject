@@ -12,6 +12,7 @@ export default function AddUser() {
         username:"",
         email:"",
         password:"",
+        role:"circle",
     })
 
     const{username, email, password} = user
@@ -81,6 +82,7 @@ export default function AddUser() {
                             name="username"
                             value={username}
                             onChange={(e) => onInputChange(e)}
+                            required
                         />
                     </Box>
                 </Box>
@@ -110,6 +112,7 @@ export default function AddUser() {
                             name="email"
                             value={email}
                             onChange={(e) => onInputChange(e)}
+                            required
                         />
                     </Box>
                 </Box>
@@ -133,6 +136,7 @@ export default function AddUser() {
                             name="password"
                             value={password}
                             onChange={(e) => onInputChange(e)}
+                            required
                         />
                     </Box>
                 </Box>
@@ -156,6 +160,7 @@ export default function AddUser() {
                             name="password"
                             value={password}
                             onChange={(e) => onInputChange(e)}
+                            required
                         />
                     </Box>
                 </Box>
