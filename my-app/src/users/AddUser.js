@@ -3,8 +3,11 @@ import {Box} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import {getResponseError} from "../utils/errorUtil";
 
 export default function AddUser() {
+
+    const [error, setError] = useState(null);
 
     let navigate = useNavigate();
 
@@ -25,13 +28,21 @@ export default function AddUser() {
 
     const onSubmit = async (e)=>{
         e.preventDefault();
-        await axios.post("http://localhost:8080/user", user);
-        navigate("/");
+        setError(null);
+        try {
+            const {data} = await axios.post("http://localhost:8080/adduser", user);
+            //navigate("/");
+            console.log("data:", data);
+        }
+        catch (error) {
+            console.log('error.response', error.response);
+            setError(getResponseError(error));
+            console.log('Eroarea este: ', error);
+        }
     }
 
     return (
         <Box>
-
             <Box style={{
                 display: 'flex',
                 alignItems: 'right',
@@ -86,6 +97,7 @@ export default function AddUser() {
                         />
                     </Box>
                 </Box>
+
                 <Box style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -164,6 +176,18 @@ export default function AddUser() {
                         />
                     </Box>
                 </Box>
+
+                <Box style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '0.6rem 1.2rem',
+                    border: 'none',
+                    color: '#F43596',
+                }}>
+                    {error}
+                </Box>
+
                 <Box style={{
                     display: 'flex',
                     alignItems: 'center',

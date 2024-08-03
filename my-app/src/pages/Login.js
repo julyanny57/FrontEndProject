@@ -19,7 +19,7 @@ export default function Login() {
     const submitHandler = async (e)=>{
         e.preventDefault();
         try {
-            const {data} = await axios.get("http://localhost:8080/username/" + username + "&&" + password + "");
+            const {data} = await axios.get("http://localhost:8080/loginUser/" + username + "&&" + password + "");
 
             console.log("data.role=", data.role);
             switch(data.role) {
@@ -35,14 +35,15 @@ export default function Login() {
                 case 'admin':
                     navigate("/mixGames");
                     break;
-                default:
-                navigate("/");
+               /* default:
+                navigate("/");*/
             }
 
             console.log("data:", data);
         } catch (error) {
             console.log('error.response', error.response);
             setError(getResponseError(error));
+            console.log('Eroarea este: ', error);
         }
     }
 
