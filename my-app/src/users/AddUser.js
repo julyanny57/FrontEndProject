@@ -32,7 +32,7 @@ export default function AddUser() {
         setError(null);
         try {
             const {data} = await axios.post("http://localhost:8080/adduser", user);
-            //navigate("/");
+            navigate("/welcomePage");
             console.log("data:", data);
         }
         catch (error) {

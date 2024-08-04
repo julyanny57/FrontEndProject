@@ -10,6 +10,7 @@ import AddUser from "./users/AddUser";
 import Login from "./pages/Login";
 import NoGamesFound from "./pages/NoGamesFound";
 import MixGames from "./pages/MixGames";
+import WelcomePage from "./pages/WelcomePage";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App () {
@@ -28,6 +29,7 @@ function App () {
                     <Route exact path="/circleGame" element={<MyFirstComponent />} />
                     <Route exact path="/triangleGame" element={<TriangleComponent />} />
                     <Route exact path="/mixGames" element={<MixGames />} />
+                    <Route exact path="/welcomePage" element={<WelcomePage />} />
                 </Routes>
 
             </Router>
