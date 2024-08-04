@@ -15,10 +15,11 @@ export default function AddUser() {
         username:"",
         email:"",
         password:"",
+        confirmPassword:"",
         role:"circle",
     })
 
-    const{username, email, password} = user
+    const{username, email, password, confirmPassword} = user
 
     const onInputChange=(e) => {
 
@@ -37,7 +38,6 @@ export default function AddUser() {
         catch (error) {
             console.log('error.response', error.response);
             setError(getResponseError(error));
-            console.log('Eroarea este: ', error);
         }
     }
 
@@ -50,7 +50,7 @@ export default function AddUser() {
                 padding: '0.6rem 1.2rem',
                 border: 'none',
             }}>
-                <Link className="bold-text mx-2"to="/">
+                <Link className="bold-text mx-2" to="/">
                     BACK
                 </Link>
             </Box>
@@ -62,7 +62,8 @@ export default function AddUser() {
                     justifyContent: 'center',
                     margin: 40,
                     marginTop: '2rem',
-                    color: '#F43596',
+                    color: '#008000',
+                    fontWeight: 700,
                 }}>
                 Register user
             </Box>
@@ -169,8 +170,8 @@ export default function AddUser() {
                             type={"text"}
                             className="form-control"
                             placeholder="Confirm password"
-                            name="password"
-                            value={password}
+                            name="confirmPassword"
+                            value={confirmPassword}
                             onChange={(e) => onInputChange(e)}
                             required
                         />
