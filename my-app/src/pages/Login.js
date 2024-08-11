@@ -13,30 +13,30 @@ export default function Login() {
      const [error, setError] = useState(null);
      const [role, setRole] = useState('');
 
-
     let navigate = useNavigate();
 
     const submitHandler = async (e)=>{
         e.preventDefault();
+        window.localStorage.setItem("isLoggedIn", true);
         try {
             const {data} = await axios.get("http://localhost:8080/loginUser/" + username + "&&" + password + "");
 
             console.log("data.role=", data.role);
             switch(data.role) {
-                case 'circle':
-                    navigate("/circleGame");
-                    break;
-                case 'triangle':
-                    navigate("/triangleGame");
-                    break;
-                case 'none':
-                    navigate("/noGamesFound");
-                    break;
+                // case 'circle':
+                //     navigate("/circleGame");
+                //     break;
+                // case 'triangle':
+                //     navigate("/triangleGame");
+                //     break;
+                // case 'none':
+                //     navigate("/noGamesFound");
+                //     break;
                 case 'admin':
                     navigate("/mixGames");
                     break;
-               /* default:
-                navigate("/");*/
+                default:
+                navigate("/gameListPage");
             }
 
             console.log("data:", data);

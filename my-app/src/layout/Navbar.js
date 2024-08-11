@@ -2,12 +2,20 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {NavLink} from "react-bootstrap";
+import {NavLink, Button} from "react-bootstrap";
 import {Box} from "@mui/material";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const TopNav = () => {
+
+    const navigate = useNavigate();
+
+    const Logout = () => {
+       window.localStorage.removeItem("isLoggedIn");
+       navigate("/goodbyPage");
+    }
 
     const menuData = [
         {
@@ -46,6 +54,9 @@ const TopNav = () => {
                     </Nav>
                     <Nav className="ms-auto">
                         <Link className="btn btn-signup" to="/loginUser">LOGIN</Link>
+                    </Nav>
+                    <Nav className="ms-auto">
+                        <Button onClick={() => Logout()} className="btn btn-signup">LOGOUT</Button>
                     </Nav>
                     <Nav className="ms-auto">
                         <Link className="btn btn-signup" to="/adduser">Add User</Link>

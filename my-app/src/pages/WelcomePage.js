@@ -1,5 +1,6 @@
 import React from 'react'
 import {Box} from "@mui/material";
+import Welcome from "../components/Welcome";
 
 export default function WelcomePage(){
     return (
@@ -52,6 +53,9 @@ export default function WelcomePage(){
                 <button type="submit" className="btn btn-outline-primary">
                     Let's continue ->
                 </button>
+            </Box>
+            <Box>
+                <Welcome/>
             </Box>
         </Box>
     )
