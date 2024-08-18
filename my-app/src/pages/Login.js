@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {getResponseError} from ".././utils/errorUtil"
 import {getRole} from ".././utils/roleUtil"
+// import session from 'express-session'
+// import cookieParser from 'cookie-parser'
+import {useCookies} from "react-cookie";
 
 export default function Login() {
 
@@ -12,12 +15,18 @@ export default function Login() {
      const [password, setPwd] = useState('');
      const [error, setError] = useState(null);
      const [role, setRole] = useState('');
+     const [cookies, setCookie] = useCookies(["cookieConsent"]);
+
+    const giveCookieConsent = () => {
+        setCookie("cookieConsent", true, {secure: true, sameSite: 'none'});
+    };
 
     let navigate = useNavigate();
 
     const submitHandler = async (e)=>{
         e.preventDefault();
         window.localStorage.setItem("isLoggedIn", true);
+        window.location.reload(false);
         try {
             const {data} = await axios.get("http://localhost:8080/loginUser/" + username + "&&" + password + "");
 
@@ -156,7 +165,7 @@ export default function Login() {
                     padding: '0.6rem 1.2rem',
                     border: 'none',
                 }}>
-                    <button type="submit" className="btn btn-outline-primary">
+                    <button type="submit" onClick={giveCookieConsent} className="btn btn-outline-primary">
                         Sign In
                     </button>
                 </Box>

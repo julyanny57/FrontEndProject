@@ -2,9 +2,17 @@ import React from 'react'
 import {Box} from "@mui/material";
 import {Button} from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function Home(){
+
+    const navigate = useNavigate();
+
+    // const refreshPage = () => {
+    //     window.location.reload(false);
+    //     navigate("/loginUser");
+    // }
+
     return (
         <Box>
             <Box
@@ -28,7 +36,7 @@ export default function Home(){
                     color: '#008000',
                     fontWeight: 700,
                 }}>
-        <Link  className="bold-text mx-2" to="/">Go to HOME page</Link>
+        <Link  className="bold-text mx-2" to="/loginUser">Go to HOME page</Link>
             </Box>
         </Box>
     )

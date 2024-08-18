@@ -14,7 +14,14 @@ const TopNav = () => {
 
     const Logout = () => {
        window.localStorage.removeItem("isLoggedIn");
+       window.location.reload(false);
        navigate("/goodbyPage");
+    }
+
+    const Login = () => {
+        window.localStorage.addItem("isLoggedIn");
+        window.location.reload(false);
+        navigate("/loginUser");
     }
 
     const menuData = [
