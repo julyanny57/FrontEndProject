@@ -8,6 +8,9 @@ import {getRole} from ".././utils/roleUtil"
 // import session from 'express-session'
 // import cookieParser from 'cookie-parser'
 import {useCookies} from "react-cookie";
+import SetCookie from "../hooks/setCookie";
+import GetCookie from "../hooks/getCookie";
+import RemoveCookie from "../hooks/removeCookie";
 
 export default function Login() {
 
@@ -31,6 +34,10 @@ export default function Login() {
             const {data} = await axios.get("http://localhost:8080/loginUser/" + username + "&&" + password + "");
 
             console.log("data.role=", data.role);
+
+            RemoveCookie('userCookie');
+            SetCookie('userCookie', JSON.stringify(data));
+
             switch(data.role) {
                 // case 'circle':
                 //     navigate("/circleGame");

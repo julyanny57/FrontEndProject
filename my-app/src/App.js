@@ -13,6 +13,7 @@ import MixGames from "./pages/MixGames";
 import GameListPage from "./pages/GameListPage";
 import WelcomePage from "./pages/WelcomePage";
 import GoodbyPage from "./pages/GoodbyPage";
+import HelloUser from "./pages/HelloUser";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App () {
@@ -28,7 +29,7 @@ function App () {
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/adduser" element={<AddUser />} />
-                    <Route exact path="/loginUser" element={login ? <Home /> : <Login />} />
+                    <Route exact path="/loginUser" element={login ? <HelloUser /> : <Login />} />
                     <Route exact path="/noGamesFound" element={<NoGamesFound />} />
                     <Route exact path="/circleGame" element={<MyFirstComponent />} />
                     <Route exact path="/triangleGame" element={<TriangleComponent />} />

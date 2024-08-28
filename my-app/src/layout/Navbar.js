@@ -7,22 +7,24 @@ import {Box} from "@mui/material";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import RemoveCookie from "../hooks/removeCookie";
 
 const TopNav = () => {
 
     const navigate = useNavigate();
 
     const Logout = () => {
+       RemoveCookie('userCookie');
        window.localStorage.removeItem("isLoggedIn");
        window.location.reload(false);
        navigate("/goodbyPage");
     }
 
-    const Login = () => {
-        window.localStorage.addItem("isLoggedIn");
-        window.location.reload(false);
-        navigate("/loginUser");
-    }
+    // const Login = () => {
+    //     window.localStorage.addItem("isLoggedIn");
+    //     window.location.reload(false);
+    //     navigate("/loginUser");
+    // }
 
     const menuData = [
         {
