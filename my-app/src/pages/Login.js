@@ -4,9 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {getResponseError} from ".././utils/errorUtil"
-import {getRole} from ".././utils/roleUtil"
-// import session from 'express-session'
-// import cookieParser from 'cookie-parser'
 import {useCookies} from "react-cookie";
 import SetCookie from "../hooks/setCookie";
 import GetCookie from "../hooks/getCookie";
@@ -14,11 +11,11 @@ import RemoveCookie from "../hooks/removeCookie";
 
 export default function Login() {
 
-     const [username, setUser] = useState('');
-     const [password, setPwd] = useState('');
-     const [error, setError] = useState(null);
-     const [role, setRole] = useState('');
-     const [cookies, setCookie] = useCookies(["cookieConsent"]);
+    const [username, setUser] = useState('');
+    const [password, setPwd] = useState('');
+    const [error, setError] = useState(null);
+    const [role, setRole] = useState('');
+    const [cookies, setCookie] = useCookies(["cookieConsent"]);
 
     const giveCookieConsent = () => {
         setCookie("cookieConsent", true, {secure: true, sameSite: 'none'});
@@ -28,23 +25,22 @@ export default function Login() {
 
     const submitHandler = async (e)=>{
         e.preventDefault();
-        window.localStorage.setItem("isLoggedIn", true);
-        window.location.reload(false);
         try {
             const {data} = await axios.get("http://localhost:8080/loginUser/" + username + "&&" + password + "");
 
             console.log("data.role=", data.role);
 
-            RemoveCookie('userCookie');
+            // RemoveCookie('userCookie');
+            // RemoveCookie('cookieConsent');
             SetCookie('userCookie', JSON.stringify(data));
 
             switch(data.role) {
-                // case 'circle':
-                //     navigate("/circleGame");
-                //     break;
-                // case 'triangle':
-                //     navigate("/triangleGame");
-                //     break;
+                 case 'circle':
+                     navigate("/mixGames");
+                     break;
+                 case 'minGames':
+                     navigate("/triangleGame");
+                     break;
                 // case 'none':
                 //     navigate("/noGamesFound");
                 //     break;
@@ -52,7 +48,7 @@ export default function Login() {
                     navigate("/mixGames");
                     break;
                 default:
-                navigate("/gameListPage");
+                    navigate("/gameListPage");
             }
 
             console.log("data:", data);
@@ -61,6 +57,8 @@ export default function Login() {
             setError(getResponseError(error));
             console.log('Eroarea este: ', error);
         }
+        window.localStorage.setItem("isLoggedIn", true);
+        window.location.reload(false);
     }
 
     return (
@@ -178,5 +176,5 @@ export default function Login() {
                 </Box>
             </form>
         </Box>
-);
+    );
 }

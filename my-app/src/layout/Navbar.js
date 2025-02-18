@@ -14,17 +14,11 @@ const TopNav = () => {
     const navigate = useNavigate();
 
     const Logout = () => {
-       RemoveCookie('userCookie');
-       window.localStorage.removeItem("isLoggedIn");
-       window.location.reload(false);
-       navigate("/goodbyPage");
+        navigate("/goodbyPage");
+        RemoveCookie('userCookie');
+        window.localStorage.removeItem("isLoggedIn");
+        window.location.reload(false);
     }
-
-    // const Login = () => {
-    //     window.localStorage.addItem("isLoggedIn");
-    //     window.location.reload(false);
-    //     navigate("/loginUser");
-    // }
 
     const menuData = [
         {
@@ -69,6 +63,9 @@ const TopNav = () => {
                     </Nav>
                     <Nav className="ms-auto">
                         <Link className="btn btn-signup" to="/adduser">Add User</Link>
+                    </Nav>
+                    <Nav className="ms-auto">
+                        <Link className="btn btn-signup" to="/gameListPage">MyGamePlace</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

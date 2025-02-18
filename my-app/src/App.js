@@ -5,6 +5,7 @@ import TitleComponent from "./components/TitleComponent";
 import TriangleComponent from "./components/TriangleComponent";
 import Home from "./pages/Home";
 import Navbar from './layout/Navbar'
+import Slider from "./components/Slider";
 import './App.css'
 import AddUser from "./users/AddUser";
 import Login from "./pages/Login";
@@ -23,23 +24,35 @@ function App () {
 
     const login = window.localStorage.getItem("isLoggedIn");
 
-    return (
-            <Router>
-            <Navbar/>
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/adduser" element={<AddUser />} />
-                    <Route exact path="/loginUser" element={login ? <HelloUser /> : <Login />} />
-                    <Route exact path="/noGamesFound" element={<NoGamesFound />} />
-                    <Route exact path="/circleGame" element={<MyFirstComponent />} />
-                    <Route exact path="/triangleGame" element={<TriangleComponent />} />
-                    <Route exact path="/mixGames" element={<MixGames />} />
-                    <Route exact path="/welcomePage" element={<WelcomePage />} />
-                    <Route exact path="/gameListPage" element={<GameListPage />} />
-                    <Route exact path="/goodbyPage" element={<GoodbyPage />} />
-                </Routes>
+    // const data = [
+    //     {url : "https://thumbs.dreamstime.com/b/circles-different-sizes-blue-including-large-medium-small-abstract-concept-same-shape-90076935.jpg"},
+    //     {url : "https://www.shutterstock.com/image-illustration/3d-4-side-pyramid-red-260nw-2314348573.jpg"},
+    //     {url : "https://www.shutterstock.com/image-vector/neon-square-frames-glowing-borders-260nw-2265046211.jpg"}
+    // ]
+    //
+    // return (
+    //     <div className="App">
+    //         <Slider data = {data}/>
+    //     </div>
+    // );
 
-            </Router>
+    return (
+           <Router>
+               <Navbar/>
+            <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/adduser" element={<AddUser />} />
+            <Route exact path="/loginUser" element={login ? <HelloUser /> : <Login />} />
+            <Route exact path="/noGamesFound" element={<NoGamesFound />} />
+            <Route exact path="/circleGame" element={<MyFirstComponent />} />
+            <Route exact path="/triangleGame" element={<TriangleComponent />} />
+            <Route exact path="/mixGames" element={<MixGames />} />
+            <Route exact path="/welcomePage" element={<WelcomePage />} />
+            <Route exact path="/gameListPage" element={<GameListPage />} />
+            <Route exact path="/goodbyPage" element={<GoodbyPage />} />
+            </Routes>
+
+           </Router>
                 )
 }
 

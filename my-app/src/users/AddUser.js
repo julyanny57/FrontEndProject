@@ -16,7 +16,7 @@ export default function AddUser() {
         email:"",
         password:"",
         confirmPassword:"",
-        role:"circle",
+        role:"minGames",
     })
 
     const{username, email, password, confirmPassword} = user
